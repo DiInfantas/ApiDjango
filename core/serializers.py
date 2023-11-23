@@ -5,20 +5,15 @@ from rest_framework import serializers
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vehiculo
-        fields = ['nombreUsuario', 'rut', 'correo', 'nombre', 'apellidos', 'passUsuario','esConductor']
+        fields = ['nombreUsuario','correo' , 'nombre', 'apellidos', 'passUsuario','esConductor']
 
 class VehiculoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ['patente', 'modelo', 'marca','color','anno']
+        fields = '__all__'
 
-
-class SedeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Sede
-        fields = ['nomSede', 'direccion']
 
 class ViajeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Viaje
-        fields = ['lugarInicio','nomSede','precio']
+        fields = '__all__'

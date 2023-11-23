@@ -4,16 +4,14 @@ from django.db import models
 
 class Usuario(models.Model):
 
-    nombreUsuario = models.CharField(max_length=40, primary_key=True, unique=True,)
-    rut = models.CharField(max_length=30)
-    correo = models.CharField(max_length=30)
+    nombreUsuario = models.CharField(max_length=40, primary_key=True, unique=True)
     nombre = models.CharField(max_length=40)
-    apellidos = models.CharField(max_length=40)
+    apellidos = models.CharField(max_length=40) 
     passUsuario = models.CharField(max_length=20)
-    esConductor = models.BooleanField()
+    esConductor = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.nombreUsuario
+        return f"{self.nombre} {self.apellidos}"
     
 class Vehiculo(models.Model):
     patente = models.CharField(max_length=8, primary_key=True, unique=True,) 
@@ -22,19 +20,13 @@ class Vehiculo(models.Model):
     color = models.CharField(max_length=15)
     anno = models.IntegerField()
     def __str__(self):
-        return self.patente
-
-class Sede(models.Model):
-    nomSede = models.CharField(max_length=30, primary_key=True, unique=True,)
-    direccion = models.CharField(max_length=40)
-
-    def __str__(self):
-        return self.nomSede
+        return f"{self.marca} Patente:{self.patente}"
     
 class Viaje(models.Model):
+    hora_salida = models.TimeField()
     lugarInicio = models.CharField(max_length=30)
-    nomSede = models.ForeignKey(Sede, on_delete=models.CASCADE, max_length=30)
+    destino = models.CharField(max_length=30)
     precio = models.PositiveIntegerField()
 
     def __str__(self):
-        return self.lugarInicio
+        return f"Viaje de Usuario a {self.destino} a las {self.hora_salida}"
