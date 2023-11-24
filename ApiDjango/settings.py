@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'djongo',
     'rest_framework',
     'core',
+    'rest_api',
 ]
 
 MIDDLEWARE = [
