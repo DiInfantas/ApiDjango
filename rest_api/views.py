@@ -14,4 +14,4 @@ from .serializers import ViajeSerializer
 def lista_viajes(request):
     viajes = Viaje.objects.all()
     serializer = ViajeSerializer(viajes, many=True)
-    return Response (serializer.data)
+    return Response(serializer.data)
